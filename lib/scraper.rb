@@ -30,7 +30,7 @@ students = []
     # profile_url = :profile_url
     
     page = Nokogiri::HTML(open(profile_url))
-    profile = {}
+    attributes_hash = {}
     
     social = page.css(".social-icon-container a").collect{|icon| icon.attribute("href").value}
     social.each do |link|
