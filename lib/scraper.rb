@@ -50,6 +50,7 @@ students = []
         profile_hash[:bio] = link
       end
     end
+    
       attributes_hash[:profile_quote] = scrape_page.css(".profile-quote").text
       attributes_hash[:bio] = scrape_page.css("div.description-holder p").text
       attributes_hash
