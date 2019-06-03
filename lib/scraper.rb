@@ -29,24 +29,24 @@ students = []
 
     profile_url = :profile_url
     
-    scrape_page = Nokogiri::HTML(open(profile_url))
+    scraped_student = Nokogiri::HTML(open(profile_url))
     attributes_hash = {}
-    profile_page = scrape_page.css(".social-icon-container a").collect do |social|
+    profile_page = scraped_student.css(".social-icon-container a").collect do |social|
       social.attribute("href").value
     end
     
-    profile_page.each do |link|
-      if link.include?("twitter")
+    profile_page.each do |info|
+      if info.include?("twitter")
         profile_hash[:twitter] = link
-      elsif link.include?("linkedin")
+      elsif info.include?("linkedin")
         profile_hash[:linkedin] = link
-      elsif link.include?("github")
+      elsif info.include?("github")
         profile_hash[:github] = link
-      elsif link.include?(".com")
+      elsif info.include?(".com")
         profile_hash[:blog] = link
-      elsif link.include?("profile-quote")
+      elsif info.include?("profile-quote")
         profile_hash[:profile_quote] = link
-      elsif link.include?("bio")
+      elsif info.include?("bio")
         profile_hash[:bio] = link
       end
     end
