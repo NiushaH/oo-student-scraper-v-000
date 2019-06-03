@@ -29,7 +29,7 @@ students = []
 
     # profile_url = :profile_url
     
-    scraped_student = Nokogiri::HTML(open(profile_url))
+    profile = Nokogiri::HTML(open(profile_url))
     attributes_hash = {}
     
     
