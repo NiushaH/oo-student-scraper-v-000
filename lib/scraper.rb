@@ -8,6 +8,8 @@ students = []
 
   def self.scrape_index_page(index_url)
     #array of hashes that represents a single student [hash, hash, hash]
+    index_url = http://178.128.13.85:50977/fixtures/student-site/
+    
     
   end
 
