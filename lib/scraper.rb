@@ -37,7 +37,7 @@ students = []
     
     profile_page.each do |info|
       if info.include?("twitter")
-        profile_page[:twitter] = link
+        profile_page[:twitter] = info
       elsif info.include?("linkedin")
         profile_hash[:linkedin] = link
       elsif info.include?("github")
