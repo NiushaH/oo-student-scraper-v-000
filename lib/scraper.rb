@@ -29,7 +29,9 @@ students = []
 
     profile_url = :profile_url
     index_page = Nokogiri::HTML(open(profile_url))
-    student_profile = []
+    student_profile = {}
+    
+    
     
     
   end
