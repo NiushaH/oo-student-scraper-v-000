@@ -26,8 +26,7 @@ students = []
 
   def self.scrape_profile_page(profile_url)
     #use Nokogiri and Open-URI to access page and RETURN hash that describes student
-    student_profile = []
-    
+
     profile_url = :profile_url
     index_page = Nokogiri::HTML(open(profile_url))
     student_profile = []
