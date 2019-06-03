@@ -28,10 +28,31 @@ students = []
     #use Nokogiri and Open-URI to access page and RETURN hash that describes student
 
     profile_url = :profile_url
-    index_page = Nokogiri::HTML(open(profile_url))
-    student_profile = {}
     
-    
+    scrape_page = Nokogiri::HTML(open(profile_url))
+    attributes_hash = {}
+    profile_page = scrape_page.css(".social-icon-container a").collect do |icon|
+      icon.attribute("href").value
+  end
+      profile_page.each do |link|
+        if link.include?("twitter")
+          profile_hash[:twitter] = link
+        elsif link.include?("linkedin")
+          profile_hash[:linkedin] = link
+        elsif link.include?("github")
+          profile_hash[:github] = link
+        elsif link.include?(".com")
+          profile_hash[:blog] = link
+        elsif link.include?("profile-quote")
+          profile_hash[:profile_quote] = link
+        elsif link.include?("bio")
+          profile_hash[:bio] = link
+        end
+      end
+      profile_hash[:profile_quote] = scrape_page.css(".profile-quote").text
+      profile_hash[:bio] = scrape_page.css("div.description-holder p").text
+      profile_hash
+    end
     
     
   end
