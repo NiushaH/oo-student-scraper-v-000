@@ -17,11 +17,12 @@ class Student
   end
 
   def add_student_attributes(attributes_hash)
+    #attributes hash from scape_profile_page method
     
   end
 
   def self.all
-    
+    @@all
   end
 end
 
