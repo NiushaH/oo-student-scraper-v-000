@@ -9,9 +9,9 @@ students = []
   def self.scrape_index_page(index_url)
     #array of hashes that represents a single student [hash, hash, hash]
     
-    # html = open(index_url)
-    # index = Nokogiri::HTML(html)
-    index_page = Nokogiri::HTML(open(index_url))
+    html = open(index_url)
+    index = Nokogiri::HTML(html)
+    # index_page = Nokogiri::HTML(open(index_url))
 
     student_array = []
     index.css(".student-card a").each do |student| 
