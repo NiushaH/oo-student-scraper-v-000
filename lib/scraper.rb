@@ -35,7 +35,7 @@ students = []
       social.attribute("href").value
     end
     
-    links = page.css('.social-icon-container a').collect {|link| link.attr('href')}
+    links = profile_page.css('.social-icon-container a').collect {|link| link.attr('href')}
     links.each do |link|
       link.include?('twitter')? attributes_hash[:twitter] = link : ""
       link.include?('github')? attributes_hash[:github] = link : ""
