@@ -29,25 +29,25 @@ students = []
 
     # profile_url = :profile_url
     
-    page = Nokogiri::HTML(open(profile_url))
+    student_profile = Nokogiri::HTML(open(profile_url))
     attributes_hash = {}
     
-    social = page.css(".social-icon-container a").collect{|icon| icon.attribute("href").value}
+    social = student_profile.css(".social-icon-container a").collect{|icon| icon.attribute("href").value}
     social.each do |link|
       if link.include?("twitter")
-        profile[:twitter] = link
+        attributes_hash[:twitter] = link
       elsif link.include?("linkedin")
-        profile[:linkedin] = link
+        attributes_hash[:linkedin] = link
       elsif link.include?("github")
-        profile[:github] = link
+        attributes_hash[:github] = link
       elsif link.include?(".com")
-        profile[:blog] = link
+        attributes_hash[:blog] = link
       end
     end
     
-    attributes_hash[:profile_quote] = page.css("div.profile-quote").text
-    profile[:bio] = page.css("div.description-holder p").text
-    profile
+    attributes_hash[:profile_quote] = student_profile.css("div.profile-quote").text
+    attributes_hash[:bio] = student_profile.css("div.description-holder p").text
+    attributes_hash
   end
 
 end
