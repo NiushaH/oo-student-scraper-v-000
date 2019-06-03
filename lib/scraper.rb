@@ -31,8 +31,8 @@ students = []
     
     scrape_page = Nokogiri::HTML(open(profile_url))
     attributes_hash = {}
-    profile_page = scrape_page.css(".social-icon-container a").collect do |icon|
-      icon.attribute("href").value
+    profile_page = scrape_page.css(".social-icon-container a").collect do |social|
+      social.attribute("href").value
   end
       profile_page.each do |link|
         if link.include?("twitter")
@@ -51,7 +51,7 @@ students = []
       end
       attributes_hash[:profile_quote] = scrape_page.css(".profile-quote").text
       attributes_hash[:bio] = scrape_page.css("div.description-holder p").text
-      profile_hash
+      attributes_hash
     end
     
     
