@@ -31,6 +31,8 @@ students = []
     
     scraped_student = Nokogiri::HTML(open(profile_url))
     attributes_hash = {}
+    
+    
     profile_page = scraped_student.css(".social-icon-container a").collect do |social|
       social.attribute("href").value
     end
