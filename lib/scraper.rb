@@ -8,10 +8,9 @@ students = []
 
   def self.scrape_index_page(index_url)
     #array of hashes that represents a single student [hash, hash, hash]
-    index_url = http://178.128.13.85:50977/fixtures/student-site/
-    
     index_page = Nokogiri::HTML(open(index_url))
     student_array = []
+    
     index_page.css(".roster-cards-container").each do |student|
       student.css(".student-card a").each do |info|
         student_name = info.css(".student-name").text
@@ -21,7 +20,6 @@ students = []
       end
     end
     student_array
-    
   end
 
   def self.scrape_profile_page(profile_url)
