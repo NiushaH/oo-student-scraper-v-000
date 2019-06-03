@@ -33,22 +33,23 @@ students = []
     attributes_hash = {}
     profile_page = scrape_page.css(".social-icon-container a").collect do |social|
       social.attribute("href").value
-  end
-      profile_page.each do |link|
-        if link.include?("twitter")
-          profile_hash[:twitter] = link
-        elsif link.include?("linkedin")
-          profile_hash[:linkedin] = link
-        elsif link.include?("github")
-          profile_hash[:github] = link
-        elsif link.include?(".com")
-          profile_hash[:blog] = link
-        elsif link.include?("profile-quote")
-          profile_hash[:profile_quote] = link
-        elsif link.include?("bio")
-          profile_hash[:bio] = link
-        end
+    end
+    
+    profile_page.each do |link|
+      if link.include?("twitter")
+        profile_hash[:twitter] = link
+      elsif link.include?("linkedin")
+        profile_hash[:linkedin] = link
+      elsif link.include?("github")
+        profile_hash[:github] = link
+      elsif link.include?(".com")
+        profile_hash[:blog] = link
+      elsif link.include?("profile-quote")
+        profile_hash[:profile_quote] = link
+      elsif link.include?("bio")
+        profile_hash[:bio] = link
       end
+    end
       attributes_hash[:profile_quote] = scrape_page.css(".profile-quote").text
       attributes_hash[:bio] = scrape_page.css("div.description-holder p").text
       attributes_hash
